@@ -1,18 +1,24 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using ExpandableFloatingActionButton.Model;
+using System;
+using System.Collections.ObjectModel;
 using Xamarin.Forms;
 
 namespace ExpandableFloatingActionButton
 {
     public partial class MainPage : ContentPage
     {
+        public ObservableCollection<Album> MyImages { get; set; }
+
         public MainPage()
         {
             InitializeComponent();
+            this.BindingContext = this;
+            //this.MyImages = GetImages();
+        }
+
+        private ObservableCollection<Album> GetImages()
+        {
+            throw new NotImplementedException();
         }
     }
 }
