@@ -1,15 +1,13 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace Expander
+﻿namespace Expander
 {
+    using Xamarin.Forms;
+
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
-
+            Device.SetFlags(new string[] { "Expander_Experimental" });
             MainPage = new MainPage();
         }
 
