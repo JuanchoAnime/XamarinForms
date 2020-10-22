@@ -1,24 +1,100 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="FlipView.MainPage">
+             x:Class="FlipView.MainPage"
+             BackgroundColor="#F6F6F6"
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
-
+    <Grid Padding="30,0" HorizontalOptions="FillAndExpand" 
+          VerticalOptions="FillAndExpand">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+            <Frame HasShadow="True" Padding="20,0"
+                   HeightRequest="40" HorizontalOptions="FillAndExpand"
+                   VerticalOptions="Center">
+                <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                    <ImageButton BackgroundColor="Transparent" Source="menu"
+                           HeightRequest="16" WidthRequest="16" HorizontalOptions="Start"
+                           VerticalOptions="Center"/>
+                    <ImageButton BackgroundColor="Transparent" Source="search"
+                           HeightRequest="16" WidthRequest="16" HorizontalOptions="End"
+                           VerticalOptions="Center"/>
+                </Grid>
+            </Frame>
+        </Grid>
+        <ScrollView Grid.Row="1" HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+            <StackLayout Spacing="20" HeightRequest="40"
+                         HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                <Label Text="Where do you want to go?" TextColor="Black"
+                       FontSize="20" FontAttributes="Bold"/>
+                <CarouselView ItemsSource="{Binding Places}" HorizontalOptions="FillAndExpand"
+                              VerticalOptions="FillAndExpand">
+                    <CarouselView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid x:Name="FrontView" HorizontalOptions="FillAndExpand"
+                                      VerticalOptions="FillAndExpand">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FilToBack" />
+                                    </Grid.GestureRecognizers>
+                                    <pv:PancakeView CornerRadius="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Image Source="{Binding Image}" Aspect="AspectFill"
+                                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                            <pv:PancakeView HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand"
+                                                            BackgroundGradientAngle="170">
+                                                <pv:PancakeView.BackgroundGradientStops>
+                                                    <pv:GradientStopCollection>
+                                                        <pv:GradientStop Color="Black" Offset="0" />
+                                                        <pv:GradientStop Color="Transparent" Offset="1" />
+                                                    </pv:GradientStopCollection>
+                                                </pv:PancakeView.BackgroundGradientStops>
+                                                <StackLayout Margin="20,40" HorizontalOptions="Start"
+                                                             VerticalOptions="End">
+                                                    <Label Text="{Binding Name}" FontSize="25"
+                                                           FontAttributes="Bold" TextColor="White" />
+                                                    <Label Text="{Binding Caption}" FontSize="12" TextColor="White" />
+                                                    <Button BackgroundColor="#0099FF" Text="EXPLORER"
+                                                            TextColor="White" FontSize="12"
+                                                            WidthRequest="125" HeightRequest="35"
+                                                            CornerRadius="17" HorizontalOptions="Start" />
+                                                </StackLayout>
+                                            </pv:PancakeView>
+                                        </Grid>
+                                    </pv:PancakeView>
+                                </Grid>
+                                <Grid x:Name="BackView" IsVisible="false">
+                                    <Grid.GestureRecognizers>
+                                        <TapGestureRecognizer Tapped="FilToFront" />
+                                    </Grid.GestureRecognizers>
+                                    <pv:PancakeView CornerRadius="20" VerticalOptions="FillAndExpand" HorizontalOptions="FillAndExpand">
+                                        <Grid HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand">
+                                            <Image Source="{Binding Image}" RotationY="180" Aspect="AspectFill"
+                                                   HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+                                            <BoxView BackgroundColor="White" Opacity="0.9" />
+                                            <StackLayout Margin="20" Spacing="20" HorizontalOptions="FillAndExpand"
+                                                         VerticalOptions="FillAndExpand">
+                                                <Label Text="{Binding Name}" FontSize="20"
+                                                       FontAttributes="Bold" TextColor="Black" />
+                                                <Label Text="{Binding Description}" FontSize="12" TextColor="Black" />
+                                                <Button BackgroundColor="#0099FF" Text="EXPLORER"
+                                                        TextColor="White" FontSize="12"
+                                                        WidthRequest="125" HeightRequest="35"
+                                                        CornerRadius="17" HorizontalOptions="Start" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </pv:PancakeView>
+                                </Grid>
+                            </Grid>
+                        </DataTemplate>
+                    </CarouselView.ItemTemplate>
+                </CarouselView>
+            </StackLayout>
+        </ScrollView>
+    </Grid>
+    
 </ContentPage>
