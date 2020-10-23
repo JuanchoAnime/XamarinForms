@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30413.136
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimateText.Android", "AnimateText.Android\AnimateText.Android.csproj", "{147A9E38-A009-4ED2-A4BB-D6C23CC23179}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AnimateText", "AnimateText\AnimateText.csproj", "{9D01E785-ED2F-4FDC-9EE3-04C19A33A019}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{147A9E38-A009-4ED2-A4BB-D6C23CC23179}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{147A9E38-A009-4ED2-A4BB-D6C23CC23179}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{147A9E38-A009-4ED2-A4BB-D6C23CC23179}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{147A9E38-A009-4ED2-A4BB-D6C23CC23179}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{147A9E38-A009-4ED2-A4BB-D6C23CC23179}.Release|Any CPU.Build.0 = Release|Any CPU
+		{147A9E38-A009-4ED2-A4BB-D6C23CC23179}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{9D01E785-ED2F-4FDC-9EE3-04C19A33A019}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9D01E785-ED2F-4FDC-9EE3-04C19A33A019}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9D01E785-ED2F-4FDC-9EE3-04C19A33A019}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{9D01E785-ED2F-4FDC-9EE3-04C19A33A019}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9D01E785-ED2F-4FDC-9EE3-04C19A33A019}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9D01E785-ED2F-4FDC-9EE3-04C19A33A019}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3E4C9CB7-CEF1-4C01-9E59-F349B3E34221}
+	EndGlobalSection
+EndGlobal
