@@ -3,22 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="AnimateText.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+    <Grid RowDefinitions="Auto, Auto, *"
+          BackgroundColor="#F3F3F3" RowSpacing="20">
+        <StackLayout Padding="30" WidthRequest="300" HorizontalOptions="Start">
+            <Label Text="Set up a monthly budget goal" FontSize="30"
+                   TextColor="Black" />
+            <Label Text="Total Budget is 1,500" FontSize="20" />
+        </StackLayout>
+        <ScrollView Grid.Row="1" VerticalOptions="Start"
+                    Orientation="Horizontal" Margin="30"
+                    HorizontalScrollBarVisibility="Never">
+            <StackLayout Orientation="Horizontal" BindableLayout.ItemsSource="{Binding Badges}"
+                         VerticalOptions="Start" HeightRequest="100">
+                <BindableLayout.ItemTemplate>
+                    <DataTemplate>
+                        <Grid HorizontalOptions="StartAndExpand" VerticalOptions="FillAndExpand">
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Tapped="TapGestureRecognizer_Tapped" />
+                            </Grid.GestureRecognizers>
+                            <BoxView x:Name="MainBig" CornerRadius="20" BackgroundColor="{Binding Color}" IsVisible="False" />
+                            <Grid ColumnDefinitions="Auto, Auto" ColumnSpacing="0"
+                                  Padding="10">
+                                <StackLayout x:Name="DetailsView" IsVisible="false" 
+                                             Grid.Column="1" VerticalOptions="Center" 
+                                             Padding="20,0" TranslationX="-40" >
+                                    <Label Text="{Binding Name}" FontSize="16" 
+                                           TextColor="White" FontAttributes="Bold" />
+                                    <Label Text="{Binding Amount, StringFormat='${0:N0}'}" 
+                                           FontSize="14" TextColor="White" FontAttributes="Bold" />
+                                </StackLayout>
+                                <BoxView CornerRadius="20" HeightRequest="70"
+                                         WidthRequest="70" BackgroundColor="Black"
+                                         Opacity="0.7"/>
+                                <Image Source="{Binding Image}" HeightRequest="30"
+                                       WidthRequest="30" HorizontalOptions="Center"
+                                       VerticalOptions="Center" />
+                            </Grid>
+                        </Grid>
+                    </DataTemplate>
+                </BindableLayout.ItemTemplate>
+            </StackLayout>
+        </ScrollView>
+
+        <Grid Grid.Row="2" BackgroundColor="White" Padding="30">
+            <Label FontSize="70" FontAttributes="Bold"
+                   VerticalOptions="Center" HorizontalOptions="Center">
+                <Label.FormattedText>
+                    <FormattedString>
+                        <FormattedString.Spans>
+                            <Span Text="$" />
+                            <Span Text="{Binding Amount, StringFormat='${0:N0}'}"
+                                  TextColor="Black"/>
+                        </FormattedString.Spans>
+                    </FormattedString>
+                </Label.FormattedText>
+            </Label>
+        </Grid>
+    </Grid>
 
 </ContentPage>
