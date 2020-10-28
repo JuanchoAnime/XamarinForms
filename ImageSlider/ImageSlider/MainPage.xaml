@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodel="clr-namespace:ImageSlider.ViewModel"
+             xmlns:cards="clr-namespace:PanCardView;assembly=PanCardView" 
+             xmlns:ffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms" 
+             xmlns:controls="clr-namespace:PanCardView.Controls;assembly=PanCardView"
+             BackgroundColor="Black"
+             x:Class="ImageSlider.MainPage">
+
+    <ContentPage.BindingContext>
+        <viewmodel:MainPageViewModel />
+    </ContentPage.BindingContext>
+
+    <cards:CarouselView ItemsSource="{Binding ImageNodeInfo}"
+                        SlideShowDuration="3500"
+                        SelectedIndex="{Binding CurrenIndex}">
+        <cards:CarouselView.ItemTemplate>
+            <DataTemplate>
+                <ContentView>
+                    <Frame VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           HeightRequest="300"
+                           WidthRequest="300"
+                           Padding="0" 
+                           HasShadow="False"
+                           IsClippedToBounds="True"
+                           CornerRadius="10"
+                           BackgroundColor="{Binding Color}">
+                        
+                        <ffimage:CachedImage Source="{Binding Image}" />
+                    </Frame>
+                </ContentView>
+            </DataTemplate>
+        </cards:CarouselView.ItemTemplate>
+        <controls:IndicatorsControl ToFadeDuration="1500"/>
+        <controls:LeftArrowControl ToFadeDuration="2500"/>
+        <controls:RightArrowControl ToFadeDuration="2500"/>
+    </cards:CarouselView>
+
+</ContentPage>
