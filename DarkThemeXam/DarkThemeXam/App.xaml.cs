@@ -1,16 +1,15 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace DarkThemeXam
+﻿namespace DarkThemeXam
 {
+    using DarkThemeXam.Views.Login;
+    using Xamarin.Forms;
+
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            XF.Material.Forms.Material.Init(this);
+            MainPage = new NavigationPage(new LoginPage());
         }
 
         protected override void OnStart()
