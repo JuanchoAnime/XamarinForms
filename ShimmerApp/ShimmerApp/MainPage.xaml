@@ -1,24 +1,62 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:sk="clr-namespace:Xamarin.Forms.Skeleton;assembly=Xamarin.Forms.Skeleton" 
+             xmlns:vm="clr-namespace:ShimmerApp.ViewModel"
              x:Class="ShimmerApp.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+    <ContentPage.BindingContext>
+        <vm:MainViewModel />
+    </ContentPage.BindingContext>
+
+
+    <ListView RowHeight="100" SeparatorVisibility="None"
+              SelectionMode="None" VerticalOptions="FillAndExpand"
+              BackgroundColor="Transparent" ItemsSource="{Binding Products}"
+              sk:Skeleton.IsBusy="{Binding IsBusy}"
+              RefreshCommand="{Binding RefreshCommand}"
+              IsRefreshing="{Binding IsBusy}"
+              sk:Skeleton.IsParent="True" IsPullToRefreshEnabled="True" >
+
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <Frame HasShadow="False" BorderColor="#DCDCDC"
+                           Padding="10,5,5,5" IsClippedToBounds="True"
+                           Margin="15" BackgroundColor="White"
+                           sk:Skeleton.IsParent="True" 
+                           sk:Skeleton.IsBusy="{Binding IsBusy}"
+                           sk:Skeleton.BackgroundColor="#D3D3D3">
+                        <Grid VerticalOptions="CenterAndExpand">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="2*" />
+                                <ColumnDefinition Width="8*" />
+                            </Grid.ColumnDefinitions>
+                            <Image HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                                   HeightRequest="50" WidthRequest="50"
+                                   Aspect="AspectFit" Source="greyImage" />
+                            <Image HorizontalOptions="StartAndExpand" VerticalOptions="CenterAndExpand"
+                                   HeightRequest="50" WidthRequest="50" Source="{Binding Image}"
+                                   sk:Skeleton.IsBusy="{Binding IsBusy}"
+                                   sk:Skeleton.Hide="True" />
+                            <StackLayout Grid.Column="1" Orientation="Vertical" >
+                                <Label Text="{Binding Title}" TextColor="SlateGray"
+                                       FontSize="Small" FontAttributes="None"
+                                       VerticalOptions="CenterAndExpand" HorizontalOptions="Fill"
+                                       sk:Skeleton.IsBusy="{Binding IsBusy}"
+                                       sk:Skeleton.BackgroundColor="#C0C0C0"/>
+                                <Label Text="{Binding SubTitle}" TextColor="SlateGray"
+                                       FontSize="Small" VerticalOptions="CenterAndExpand"
+                                       HorizontalOptions="FillAndExpand" 
+                                       sk:Skeleton.IsBusy="{Binding IsBusy}"
+                                       sk:Skeleton.BackgroundColor="#C0C0C0"/>
+                            </StackLayout>
+                        </Grid>
+                    </Frame>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+        
+    </ListView>
 
 </ContentPage>
