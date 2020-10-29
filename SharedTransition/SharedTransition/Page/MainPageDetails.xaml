@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="SharedTransition.Page.MainPageDetails"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:transition="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions">
+    
+    <StackLayout Spacing="50" VerticalOptions="CenterAndExpand">
+        <Image x:Name="MyImage" HeightRequest="250" 
+               transition:Transition.Name="shareditemTransition" />
+        <Label x:Name="MyLabel" FontSize="50"
+               HorizontalOptions="CenterAndExpand" />
+    </StackLayout>
+</ContentPage>

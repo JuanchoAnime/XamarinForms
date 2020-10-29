@@ -1,16 +1,14 @@
-﻿using System;
-using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
-
-namespace SharedTransition
+﻿namespace SharedTransition
 {
+    using Plugin.SharedTransitions;
+    using Xamarin.Forms;
+
     public partial class App : Application
     {
         public App()
         {
             InitializeComponent();
-
-            MainPage = new MainPage();
+            MainPage = new SharedTransitionNavigationPage(new MainPage());
         }
 
         protected override void OnStart()
