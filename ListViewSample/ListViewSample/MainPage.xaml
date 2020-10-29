@@ -3,22 +3,35 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="ListViewSample.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+    <ContentPage.Content>
+        <StackLayout Margin="30" Orientation="Vertical">
+            <Button Text="Add Images To List"
+                Command="{Binding AddCommand}"
+                TextColor="White"
+                BackgroundColor="Black" />
+
+            <ListView x:Name="MyList" SeparatorVisibility="None"
+                      HasUnevenRows="True" ItemsSource="{Binding CollectionList}"
+                      Footer="">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="Auto" />
+                                    <ColumnDefinition Width="*" />
+                                </Grid.ColumnDefinitions>
+                                <Label VerticalOptions="CenterAndExpand" Text="{Binding TextName}" />
+                                <Button Command="{Binding Path=BindingContext.DeleteCommand, Source={x:Reference MyList}}}"
+                                         CommandParameter="{Binding .}" Grid.Column="1"
+                                        Padding="30, 10" Text="Delete" HorizontalOptions="EndAndExpand"
+                                        BackgroundColor="Black" TextColor="White"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 
 </ContentPage>
