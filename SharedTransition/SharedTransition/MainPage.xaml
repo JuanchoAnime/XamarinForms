@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             NavigationPage.HasNavigationBar="False"
+             x:Class="SharedTransition.MainPage"
+             xmlns:transition="clr-namespace:Plugin.SharedTransitions;assembly=Plugin.SharedTransitions" >
+
+    <CollectionView x:Name="MyItems" ItemsSource="{Binding ItemCollection}" 
+                    VerticalScrollBarVisibility="Never" SelectionMode="Single"
+                    SelectionChanged="MyItems_SelectionChanged" Margin="20"   >
+        <CollectionView.ItemsLayout>
+            <GridItemsLayout Orientation="Vertical" Span="2" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <StackLayout>
+                    <Image transition:Transition.Name="shareditemTransition"
+                           transition:Transition.Group="{Binding Id}"
+                           Source="{Binding Image}" Aspect="AspectFit"
+                           HorizontalOptions="Center" HeightRequest="270"
+                            WidthRequest="170" />
+                </StackLayout>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>
