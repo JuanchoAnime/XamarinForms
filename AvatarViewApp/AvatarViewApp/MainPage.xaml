@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:views="clr-namespace:Xamarin.CommunityToolkit.UI.Views;assembly=Xamarin.CommunityToolkit"
+             x:Class="AvatarViewApp.MainPage">
+
+    <CollectionView Margin="20" ItemsSource="{Binding ContentItemsCollection }">
+        <CollectionView.ItemsLayout>
+            <LinearItemsLayout  ItemSpacing="10" Orientation="Vertical" />
+        </CollectionView.ItemsLayout>
+        <CollectionView.ItemTemplate>
+            <DataTemplate>
+                <Grid RowDefinitions="Auto,Auto"  ColumnDefinitions="Auto,*">
+                    <views:AvatarView Text="{Binding Name}"  Source="{Binding Avatar}"  
+                                      Size="80" Color="#FF3300" TextColor="White" />
+                    <Label Grid.Row="0" TextColor="Gray" 
+                           VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand" 
+                           Grid.Column="1"  Text="{Binding PhoneNumber}"/>
+                    <BoxView Grid.Row="1" Grid.ColumnSpan="2" 
+                             HeightRequest="1" BackgroundColor="LightGray"/>
+                </Grid>
+            </DataTemplate>
+        </CollectionView.ItemTemplate>
+    </CollectionView>
+
+</ContentPage>
