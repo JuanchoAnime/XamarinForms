@@ -2,6 +2,7 @@
 {
     using Prism.Mvvm;
     using Prism.Navigation;
+    using Xamarin.Forms;
 
     public class ViewModelBase : BindableBase, IInitialize, INavigationAware, IDestructible
     {
@@ -14,12 +15,14 @@
             NavigationService = navigationService;
         }
 
-        public void Destroy() { }
+        public virtual void Destroy() { }
 
-        public void Initialize(INavigationParameters parameters) { }
+        public virtual void Initialize(INavigationParameters parameters) { }
 
-        public void OnNavigatedFrom(INavigationParameters parameters) { }
+        public virtual void OnNavigatedFrom(INavigationParameters parameters) { }
 
-        public void OnNavigatedTo(INavigationParameters parameters) { }
+        public virtual void OnNavigatedTo(INavigationParameters parameters) { }
+
+        public string GetStringForDistionary(string key) => Application.Current.Resources[key].ToString();
     }
 }

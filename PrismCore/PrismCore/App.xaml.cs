@@ -3,6 +3,7 @@
     using Prism;
     using Prism.Ioc;
     using PrismCore.Page;
+    using PrismCore.Service;
     using PrismCore.ViewModel;
     using Xamarin.Forms;
 
@@ -13,14 +14,17 @@
 
         protected override void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            containerRegistry.Register<CountryService>();
             containerRegistry.RegisterForNavigation<NavigationPage>();
-            containerRegistry.RegisterForNavigation<LoginPage, LoginViewModel>();
+            containerRegistry.RegisterForNavigation<ContriesPage, CountriesViewModel>();
+
+            containerRegistry.RegisterForNavigation<LandPage, LandViewModel>();
         }
 
         protected async override void OnInitialized()
         {
             InitializeComponent();
-            await NavigationService.NavigateAsync("NavigationPage/LoginPage");
+            await NavigationService.NavigateAsync($"NavigationPage/{nameof(ContriesPage)}");
         }
 
         protected override void OnStart() { }

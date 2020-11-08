@@ -4,6 +4,8 @@
              xmlns:prism="http://prismlibrary.com"
              x:Class="PrismCore.App">
     <Application.Resources>
-
+        <ResourceDictionary>
+            <x:String x:Key="UrlApi">https://restcountries.eu/rest/v2</x:String>
+        </ResourceDictionary>
     </Application.Resources>
 </prism:PrismApplication>
