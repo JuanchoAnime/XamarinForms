@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PrismCore.Page.ContriesPage"
+             NavigationPage.HasNavigationBar="False"
+             BackgroundColor="Silver"
+             Title="{Binding Title}">
+    <ContentPage.Content>
+        <StackLayout Padding="5,5,5,30">
+            <SearchBar
+             BackgroundColor="Silver"
+                Text="{Binding Filter}"
+                Placeholder="Search..."
+                SearchCommand="{Binding SearchCommand}" />
+
+            <ListView 
+                x:Name="MyList"
+                BackgroundColor="Silver"
+                HasUnevenRows="True"
+                IsPullToRefreshEnabled="True"
+                CachingStrategy="RecycleElement"
+                IsRefreshing="{Binding IsRefreshing}"
+                ItemsSource="{Binding Countries}"
+                SeparatorVisibility="None"
+                RefreshCommand="{Binding RefreshCommand}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame Margin="5" CornerRadius="20"
+                                   HasShadow="True">
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.LandTapCommand, Source={x:Reference MyList}}}"
+                                                              CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
+                                <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*" />
+                                        <ColumnDefinition Width="Auto" />
+                                    </Grid.ColumnDefinitions>
+                                    <StackLayout Grid.Column="0" VerticalOptions="Center">
+                                        <Label FontAttributes="Bold" FontSize="Medium"
+                                               Text="{Binding Name}" TextColor="Black"/>
+                                        <Label Text="{Binding Capital}"
+                                               TextColor="Gray"/>
+                                    </StackLayout>
+                                </Grid>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
