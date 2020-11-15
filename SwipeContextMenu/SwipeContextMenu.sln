@@ -1,0 +1,35 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30621.155
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwipeContextMenu.Android", "SwipeContextMenu.Android\SwipeContextMenu.Android.csproj", "{3826F984-19EC-4F6F-9B66-762F05A26CA7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SwipeContextMenu", "SwipeContextMenu\SwipeContextMenu.csproj", "{25853073-47E0-45D5-9AA5-BCC75611D17B}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3826F984-19EC-4F6F-9B66-762F05A26CA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3826F984-19EC-4F6F-9B66-762F05A26CA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3826F984-19EC-4F6F-9B66-762F05A26CA7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{3826F984-19EC-4F6F-9B66-762F05A26CA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3826F984-19EC-4F6F-9B66-762F05A26CA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3826F984-19EC-4F6F-9B66-762F05A26CA7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{25853073-47E0-45D5-9AA5-BCC75611D17B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{25853073-47E0-45D5-9AA5-BCC75611D17B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{25853073-47E0-45D5-9AA5-BCC75611D17B}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{25853073-47E0-45D5-9AA5-BCC75611D17B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{25853073-47E0-45D5-9AA5-BCC75611D17B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{25853073-47E0-45D5-9AA5-BCC75611D17B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DB585629-8450-4906-A225-2398F628F834}
+	EndGlobalSection
+EndGlobal
