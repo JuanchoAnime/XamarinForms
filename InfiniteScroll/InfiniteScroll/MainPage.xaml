@@ -1,24 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:fftrasformation="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             xmlns:viewModel="clr-namespace:InfiniteScroll.ViewModel"
              x:Class="InfiniteScroll.MainPage">
 
-    <StackLayout>
-        <Frame BackgroundColor="#2196F3" Padding="24" CornerRadius="0">
-            <Label Text="Welcome to Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
-        </Frame>
-        <Label Text="Start developing now" FontSize="Title" Padding="30,10,30,10"/>
-        <Label Text="Make changes to your XAML file and save to see your UI update in the running app with XAML Hot Reload. Give it a try!" FontSize="16" Padding="30,0,30,0"/>
-        <Label FontSize="16" Padding="30,24,30,0">
-            <Label.FormattedText>
-                <FormattedString>
-                    <FormattedString.Spans>
-                        <Span Text="Learn more at "/>
-                        <Span Text="https://aka.ms/xamarin-quickstart" FontAttributes="Bold"/>
-                    </FormattedString.Spans>
-                </FormattedString>
-            </Label.FormattedText>
-        </Label>
-    </StackLayout>
+    <ContentPage.BindingContext>
+        <viewModel:MainViewModel />
+    </ContentPage.BindingContext>
 
+    <ContentPage.Content>
+        <StackLayout Padding="10">
+            <ListView
+                ItemsSource="{Binding Items}"
+                VerticalScrollBarVisibility="Never"
+                SeparatorVisibility="None"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True">
+
+                <ListView.Header>
+                    <StackLayout Orientation="Horizontal" Margin="10">
+                        <StackLayout>
+                            <ff:CachedImage Source="https://cdn.myanimelist.net/images/userimages/9128492.jpg?t=1604347800"
+                                            VerticalOptions="Center" HorizontalOptions="Start" HeightRequest="60"
+                                            WidthRequest="70">
+                                <ff:CachedImage.Transformations>
+                                    <fftrasformation:RoundedTransformation Radius="240" />
+                                </ff:CachedImage.Transformations>
+                            </ff:CachedImage>
+                            <Label Text="Judas3991" TextColor="Gray"
+                                   FontSize="Small" VerticalTextAlignment="Center"
+                                   HorizontalOptions="Center"/>
+                        </StackLayout>
+                        <CollectionView ItemsSource="{Binding Histories}" HeightRequest="90" 
+                                        HorizontalScrollBarVisibility="Never" ItemsLayout="HorizontalList">
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Margin="5">
+                                        <ff:CachedImage Source="{Binding ProfilePicture}" HeightRequest="60"
+                                                        WidthRequest="60" VerticalOptions="Center"
+                                                        HorizontalOptions="Center">
+                                            <ff:CachedImage.Transformations>
+                                                <fftrasformation:RoundedTransformation Radius="240" BorderHexColor="#F77737" />
+                                            </ff:CachedImage.Transformations>
+                                        </ff:CachedImage>
+                                        <Label Text="{Binding UserName}" TextColor="Gray"
+                                               FontSize="Medium" VerticalOptions="Center" HorizontalOptions="Center"/>
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </ListView.Header>
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="500">
+                            <Grid RowDefinitions="*,6*">
+                                <!-- POST TITLE -->
+                                <StackLayout Orientation="Horizontal" Margin="0" Grid.Row="0">
+                                    <ff:CachedImage Source="{Binding ProfilePicture}" 
+                                                    WidthRequest="40" HeightRequest="40"
+                                                    VerticalOptions="Center" HorizontalOptions="Center"
+                                                    Aspect="AspectFit">
+                                        <ff:CachedImage.Transformations>
+                                            <fftrasformation:RoundedTransformation Radius="240" />
+                                        </ff:CachedImage.Transformations>
+                                    </ff:CachedImage>
+                                    <Label Text="{Binding UserName}" TextColor="White"
+                                           FontSize="Large" VerticalOptions="Center"
+                                           HorizontalOptions="StartAndExpand" FontAttributes="Bold" />
+                                </StackLayout>
+                                <ff:CachedImage Source="{Binding PostImage}" VerticalOptions="FillAndExpand"
+                                            HorizontalOptions="FillAndExpand" Grid.Row="1"
+                                            Aspect="AspectFit" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
 </ContentPage>
