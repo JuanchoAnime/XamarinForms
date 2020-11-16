@@ -32,7 +32,7 @@
                 };
 
                 data.Data.ForEach(w => {
-                    var user = users.First(u => u.IdUser == w.IdUser);
+                    var user = users.FirstOrDefault(u => u.IdUser == w.IdUser);
                     w.User = user ?? new User { IdUser = 7, Name = "Francisco Javier", ImgProfile = "https://randomuser.me/api/portraits/men/3.jpg" };
                 });
                 return data.Data;

@@ -3,7 +3,8 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:ff="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
              xmlns:fftrasformation="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
-             xmlns:viewModel="clr-namespace:InfiniteScroll.ViewModel"
+             xmlns:viewModel="clr-namespace:InfiniteScroll.ViewModel" 
+             xmlns:extended="clr-namespace:Xamarin.Forms.Extended;assembly=Xamarin.Forms.Extended.InfiniteScrolling"
              x:Class="InfiniteScroll.MainPage">
 
     <ContentPage.BindingContext>
@@ -18,6 +19,10 @@
                 SeparatorVisibility="None"
                 CachingStrategy="RecycleElement"
                 HasUnevenRows="True">
+
+                <ListView.Behaviors>
+                    <extended:InfiniteScrollBehavior IsLoadingMore="{Binding IsBusy}" />
+                </ListView.Behaviors>
 
                 <ListView.Header>
                     <StackLayout Orientation="Horizontal" Margin="10">
@@ -79,6 +84,19 @@
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
+
+                <ListView.Footer>
+                    <Grid Padding="6" IsVisible="{Binding IsBussy}">
+                        <Grid.Triggers>
+                            <Trigger TargetType="Grid" Property="IsVisible" Value="False" >
+                                <Setter Property="WidthRequest" Value="0" />
+                            </Trigger>
+                        </Grid.Triggers>
+                        <Label Text="Loading..." TextColor="DeepPink" FontSize="20"
+                               FontAttributes="Bold" VerticalOptions="Center"
+                               HorizontalOptions="Center" />
+                    </Grid>
+                </ListView.Footer>
             </ListView>
         </StackLayout>
     </ContentPage.Content>

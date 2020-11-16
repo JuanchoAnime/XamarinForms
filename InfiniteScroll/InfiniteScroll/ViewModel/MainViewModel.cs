@@ -8,15 +8,29 @@
     using System.Linq;
     using System.Threading.Tasks;
     using Xamarin.Forms;
+    using Xamarin.Forms.Extended;
 
     public class MainViewModel: BindableObject
     {
-        private ObservableCollection<InstagramModel> _items;
-        public ObservableCollection<InstagramModel> Items
+        private InfiniteScrollCollection<InstagramModel> _items;
+        private int page = 1;
+
+        public InfiniteScrollCollection<InstagramModel> Items
         {
             get { return _items; }
             set {
                 _items = value;
+                OnPropertyChanged();
+            }
+        }
+
+        private bool _isBussy;
+
+        public bool IsBussy
+        {
+            get { return _isBussy; }
+            set {
+                _isBussy = value;
                 OnPropertyChanged();
             }
         }
@@ -33,6 +47,15 @@
 
         public MainViewModel() 
         {
+            Items = new InfiniteScrollCollection<InstagramModel>
+            {
+                OnLoadMore = async () => {
+                    IsBussy = true;
+                    var items = await GetWaifus();
+                    IsBussy = false;
+                    return items;
+                }
+            };
             GetData();
             Histories = new ObservableCollection<InstagramModel>(new List<InstagramModel> {
                 new InstagramModel { ProfilePicture = "https://randomuser.me/api/portraits/women/65.jpg", UserName = "Lucia" },
@@ -52,10 +75,15 @@
 
         private async Task GetData()
         {
-            var waifus = await WaifuService.GetWaifus(1);
-            Items = new ObservableCollection<InstagramModel>(
-                waifus.Select(w => new InstagramModel { PostImage = w.Image, ProfilePicture = w.User.ImgProfile, UserName = w.User.Name })
-            );
+            Items.AddRange(await GetWaifus());
+        }
+
+        private async Task<List<InstagramModel>> GetWaifus()
+        {
+            var waifus = await WaifuService.GetWaifus(page);
+            page++;
+            if (waifus.Count == 0) page = 1;
+            return waifus.Select(w => new InstagramModel { PostImage = w.Image, ProfilePicture = w.User.ImgProfile, UserName = w.User.Name }).ToList();
         }
     }
 }
