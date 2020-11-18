@@ -1,0 +1,243 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:ios="clr-namespace:Xamarin.Forms.PlatformConfiguration.iOSSpecific;assembly=Xamarin.Forms.Core" 
+             x:Class="FlexboxApp.MainPage">
+
+    <ContentPage.Resources>
+        <Style TargetType="Frame">
+            <Setter Property="BackgroundColor" Value="#fdfdfd" />
+            <Setter Property="BorderColor" Value="#e5e5e5" />
+            <Setter Property="Margin" Value="10" />
+            <Setter Property="CornerRadius" Value="15" />
+        </Style>
+
+        <Style TargetType="Label">
+            <Setter Property="Margin" Value="0, 5" />
+        </Style>
+
+        <Style x:Key="headerLabel" TargetType="Label">
+            <Setter Property="Margin" Value="0, 8" />
+            <Setter Property="FontSize" Value="Large" />
+            <Setter Property="TextColor" Value="Blue" />
+        </Style>
+
+        <Style TargetType="Image">
+            <Setter Property="FlexLayout.Order" Value="-1" />
+            <Setter Property="FlexLayout.AlignSelf" Value="Center" />
+        </Style>
+
+        <Style TargetType="Button">
+            <Setter Property="Text" Value="MoreInfo" />
+            <Setter Property="FontSize" Value="Small" />
+            <Setter Property="TextColor" Value="White" />
+            <Setter Property="BackgroundColor" Value="#4c90ee" />
+            <Setter Property="BorderRadius" Value="30" />
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView Orientation="Both">
+        <FlexLayout>
+            <Frame WidthRequest="360"
+                   HeightRequest="550">
+                <FlexLayout Direction="Column">
+                    <Label Text="France national football team"
+                           Style="{StaticResource headerLabel}" />
+                    <Label Text="Nickname(s)" />
+                    <Label Text="  &#x2022; Les Bleus (The Blues)" />
+
+                    <Image Source="https://upload.wikimedia.org/wikipedia/fr/thumb/4/43/Logo_%C3%89quipe_France_Football_2018.svg/1200px-Logo_%C3%89quipe_France_Football_2018.svg.png"
+                           WidthRequest="240"
+                           HeightRequest="180" />
+                    <Label FlexLayout.Grow="1" />
+
+                    <Grid Grid.Row="1" 
+                          Margin="0,30" 
+                          ColumnSpacing="0" 
+                          RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout>
+                            <Image 
+                                Source="https://w7.pngwing.com/pngs/168/713/png-transparent-logo-facebook-inc-social-media-nasdaq-fb-seo-blue-text-trademark.png"
+                                HeightRequest="50" 
+                                WidthRequest="50">
+                            </Image>
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="103" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}"
+                                Text="Likes" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1">
+                            <Image 
+                                Source="https://lh3.googleusercontent.com/N-AY2XwXafWq4TQWfua6VyjPVQvTGRdz9CKOHaBl2nu2GVg7zxS886X5giZ9yY2qIjPh=w300"
+                                HeightRequest="50"
+                                WidthRequest="50" />
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="164" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}" 
+                                Text="Follow Us" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="2">
+                            <Image 
+                                Source="https://seeklogo.com/images/T/twitter-icon-circle-blue-logo-94339974C6-seeklogo.com.png"
+                                HeightRequest="50"
+                                WidthRequest="50" />
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="107" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}" 
+                                Text="Tweet Us" />
+                        </StackLayout>
+                    </Grid>
+
+                    <Button/>
+                </FlexLayout>
+            </Frame>
+
+            <Frame WidthRequest="360"
+                   HeightRequest="550">
+                <FlexLayout Direction="Column">
+                    <Label Text="Belgium national football team "
+                           Style="{StaticResource headerLabel}" />
+                    <Label Text="Nickname(s)" />
+                    <Label Text="  &#x2022; De Rode Duivels Les Diables Rouges Die Roten Teufel(The Red Devils)" />
+
+                    <Image Source="https://s.s-bol.com/imgbase0/imagebase3/large/FC/1/5/5/8/9200000076228551.jpg"
+                           WidthRequest="240"
+                           HeightRequest="180" />
+                    <Label FlexLayout.Grow="1" />
+
+                    <Grid Grid.Row="1"
+                          Margin="0,30"
+                          ColumnSpacing="0"
+                          RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout>
+                            <Image Source="https://w7.pngwing.com/pngs/168/713/png-transparent-logo-facebook-inc-social-media-nasdaq-fb-seo-blue-text-trademark.png" HeightRequest="50" WidthRequest="50"></Image>
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="103" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}" 
+                                Text="Likes" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1">
+                            <Image 
+                                Source="https://lh3.googleusercontent.com/N-AY2XwXafWq4TQWfua6VyjPVQvTGRdz9CKOHaBl2nu2GVg7zxS886X5giZ9yY2qIjPh=w300"
+                                HeightRequest="50"
+                                WidthRequest="50" />
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="164" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}" 
+                                   Text="Follow Us" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="2">
+                            <Image 
+                                Source="https://seeklogo.com/images/T/twitter-icon-circle-blue-logo-94339974C6-seeklogo.com.png"
+                                HeightRequest="50"
+                                WidthRequest="50" />
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="107" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}" 
+                                Text="Tweet Us" />
+                        </StackLayout>
+                    </Grid>
+                    <Button />
+                </FlexLayout>
+            </Frame>
+
+            <Frame WidthRequest="360"
+                   HeightRequest="550">
+                <FlexLayout Direction="Column">
+                    <Label Text="Brazil national football team"
+                           Style="{StaticResource headerLabel}" />
+                    <Label Text="Nickname(s)" />
+                    <Label Text="  &#x2022; Seleção (The National Team)" />
+
+                    <Image Source="https://upload.wikimedia.org/wikipedia/en/thumb/0/05/Flag_of_Brazil.svg/1280px-Flag_of_Brazil.svg.png"
+                           WidthRequest="180"
+                           HeightRequest="180" />
+                    <Label FlexLayout.Grow="1" />
+
+                    <Grid Grid.Row="1" 
+                          Margin="0,30" 
+                          ColumnSpacing="0" 
+                          RowSpacing="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="*" />
+                        </Grid.ColumnDefinitions>
+
+                        <StackLayout>
+                            <Image 
+                                Source="https://w7.pngwing.com/pngs/168/713/png-transparent-logo-facebook-inc-social-media-nasdaq-fb-seo-blue-text-trademark.png" 
+                                HeightRequest="50" 
+                                WidthRequest="50" />
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="103" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}" 
+                                Text="Likes" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="1">
+                            <Image 
+                                Source="https://lh3.googleusercontent.com/N-AY2XwXafWq4TQWfua6VyjPVQvTGRdz9CKOHaBl2nu2GVg7zxS886X5giZ9yY2qIjPh=w300" 
+                                HeightRequest="50" 
+                                WidthRequest="50"/> 
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="164" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}" 
+                                Text="Follow Us" />
+                        </StackLayout>
+
+                        <StackLayout Grid.Column="2">
+                            <Image 
+                                Source="https://seeklogo.com/images/T/twitter-icon-circle-blue-logo-94339974C6-seeklogo.com.png" 
+                                HeightRequest="50" 
+                                WidthRequest="50" />
+                            <Label 
+                                Style="{StaticResource StatsNumberLabel}" 
+                                Text="107" />
+                            <Label 
+                                Style="{StaticResource StatsCaptionLabel}" 
+                                Text="Tweet Us" />
+                        </StackLayout>
+                    </Grid>
+                    <Button />
+                </FlexLayout>
+            </Frame>
+        </FlexLayout>
+    </ScrollView>
+    
+</ContentPage>
