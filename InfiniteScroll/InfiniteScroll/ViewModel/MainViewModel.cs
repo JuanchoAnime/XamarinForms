@@ -82,7 +82,7 @@
         {
             var waifus = await WaifuService.GetWaifus(page);
             page++;
-            if (waifus.Count == 0) page = 1;
+            if (waifus.Count == 0) page = page--;
             return waifus.Select(w => new InstagramModel { PostImage = w.Image, ProfilePicture = w.User.ImgProfile, UserName = w.User.Name }).ToList();
         }
     }
