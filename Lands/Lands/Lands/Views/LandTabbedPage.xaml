@@ -1,0 +1,487 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:ffimageloading="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimageloadingsvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             Title="{Binding Land.Name}"
+             x:Class="Lands.Views.LandTabbedPage">
+    <TabbedPage.Children>
+        <ContentPage Title="Pais">
+            <ContentPage.Resources>
+                <ResourceDictionary>
+                    <ffimageloadingsvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter"/>
+                </ResourceDictionary>
+            </ContentPage.Resources>
+            <ContentPage.Content>
+                <ScrollView>
+                    <StackLayout Padding="5">
+                        <Label
+                            FontSize="Large"
+                            FontAttributes="Bold"
+                            HorizontalOptions="Center"
+                            Text="{Binding Land.Name}"
+                            TextColor="Black">  
+                        </Label>
+                        <ffimageloading:CachedImage 
+                            Source="{Binding Land.Flag, Converter={StaticResource SvgImageSourceConverter}}">
+                        </ffimageloading:CachedImage>
+                        <Grid>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="*"/>
+                                <ColumnDefinition Width="*"/>
+                            </Grid.ColumnDefinitions>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="0"
+                                Text="Capital"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="0"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Capital}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="1"
+                                Text="Población"
+                                TextColor="Black">  
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="1"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Population, StringFormat='{0:N0}'}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="2"
+                                Text="Area"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="2"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Area, StringFormat='{0:N0}'}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="3"
+                                Text="AlphaCode2"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="3"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Alpha2Code}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="4"
+                                Text="AlphaCode3"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="4"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Alpha3Code}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="5"
+                                Text="Región"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="5"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Region}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="6"
+                                Text="Subregion"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="6"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Subregion}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="7"
+                                Text="Denominación"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="7"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Demonym}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="8"
+                                Text="GINI"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="8"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Gini, StringFormat='{0:N2}'}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="9"
+                                Text="Idioma Nativo"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="9"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.NativeName}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="10"
+                                Text="Código Númerico"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="10"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.NumericCode}"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="0"
+                                Grid.Row="11"
+                                Text="CIOC"
+                                TextColor="Black">
+                            </Label>
+                            <Label
+                                Grid.Column="1"
+                                Grid.Row="11"
+                                FontAttributes="Bold"
+                                Text="{Binding Land.Cioc}"
+                                TextColor="Black">
+                            </Label>
+                        </Grid>
+                    </StackLayout>
+                </ScrollView>
+            </ContentPage.Content>
+        </ContentPage>
+        
+        <ContentPage Title="Fronteras">
+            <ContentPage.Content>
+                <StackLayout Padding="5">
+                    <Label
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        Text="{Binding Land.Name}"
+                        TextColor="Black">
+                    </Label>
+                    <ListView
+                        CachingStrategy="RecycleElement"
+                        HasUnevenRows="true"
+                        ItemsSource="{Binding Borders}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                            Grid.Column="0"
+                                            Text="{Binding Code}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding Name}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+        
+        <ContentPage Title="Monedas">
+            <ContentPage.Content>
+                <StackLayout Padding="5">
+                    <Label
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        Text="{Binding Land.Name}"
+                        TextColor="Black">
+                    </Label>
+                    <ListView
+                        CachingStrategy="RecycleElement"
+                        HasUnevenRows="true"
+                        ItemsSource="{Binding Currencies}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="3*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                            Grid.Column="0"
+                                            Text="{Binding Code}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center">
+                                        </Label>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding Name}"
+                                            TextColor="Black"
+                                            VerticalOptions="Center">
+                                        </Label>
+                                        <Label 
+                                            Grid.Column="2"
+                                            FontSize="40"
+                                            Text="{Binding Symbol}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+        
+        <ContentPage Title="Traducciones">
+            <ContentPage.Content>
+                <StackLayout
+                    Padding="5">
+                    <Label
+                        FontAttributes="Bold"
+                        FontSize="Large"
+                        HorizontalOptions="Center"
+                        Text="{Binding Land.Name}"
+                        TextColor="Black">
+                    </Label>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="*"/>
+                            <ColumnDefinition Width="2*"/>
+                        </Grid.ColumnDefinitions>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="0"
+                            Text="Aleman"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="0"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.De}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="1"
+                            Text="Español"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="1"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.Es}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="2"
+                            Text="Francés"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="2"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.Fr}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="3"
+                            Text="Japonés"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="3"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.Ja}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="4"
+                            Text="Italiano"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="4"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.It}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="5"
+                            Text="Brazileirao"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="5"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.Br}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="6"
+                            Text="Portugues"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="6"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.Pt}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="7"
+                            Text="Holandés"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="7"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.Nl}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="8"
+                            Text="Croata"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="8"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.Hr}"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="0"
+                            Grid.Row="9"
+                            Text="Persia"
+                            TextColor="Black">
+                        </Label>
+                        <Label
+                            Grid.Column="1"
+                            Grid.Row="9"
+                            FontAttributes="Bold"
+                            Text="{Binding Translations.Fa}"
+                            TextColor="Black">
+                        </Label>
+                    </Grid>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+        
+        <ContentPage Title="Idiomas">
+            <ContentPage.Content>
+                <StackLayout Padding="5">
+                    <Label
+                        FontSize="Large"
+                        FontAttributes="Bold"
+                        HorizontalOptions="Center"
+                        Text="{Binding Land.Name}"
+                        TextColor="Black">
+                    </Label>
+                    <ListView
+                        CachingStrategy="RecycleElement"
+                        HasUnevenRows="true"
+                        ItemsSource="{Binding Languages}">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <Grid>
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width=".5*"/>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="*"/>
+                                        </Grid.ColumnDefinitions>
+                                        <Label 
+                                            Grid.Column="0"
+                                            Text="{Binding Iso6392}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Grid.Column="1"
+                                            Text="{Binding Name}"
+                                            TextColor="Black">
+                                        </Label>
+                                        <Label 
+                                            Grid.Column="2"
+                                            Text="{Binding NativeName}"
+                                            TextColor="Black">
+                                        </Label>
+                                    </Grid>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </TabbedPage.Children>
+</TabbedPage>
