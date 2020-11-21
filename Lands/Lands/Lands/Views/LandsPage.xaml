@@ -1,0 +1,70 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:fffimage="clr-namespace:FFImageLoading.Forms;assembly=FFImageLoading.Forms"
+             xmlns:ffimagesvg="clr-namespace:FFImageLoading.Svg.Forms;assembly=FFImageLoading.Svg.Forms"
+             xmlns:ffimagetrans="clr-namespace:FFImageLoading.Transformations;assembly=FFImageLoading.Transformations"
+             mc:Ignorable="d"
+             Title="{Binding Title}"
+             x:Class="Lands.Views.LandsPage">
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <ffimagesvg:SvgImageSourceConverter x:Key="SvgImageSourceConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    <ContentPage.Content>
+        <StackLayout
+            Padding="5">
+            <ListView 
+                x:Name="listViewEjemplo1"
+                CachingStrategy="RecycleElement"
+                HasUnevenRows="True"                
+                IsPullToRefreshEnabled="True"
+                IsRefreshing="{Binding IsRefreshing}"
+                ItemsSource="{Binding Countries}"
+                RefreshCommand="{Binding RefreshCommand}" >
+                <ListView.Header>
+                    <StackLayout>
+                        <SearchBar
+                            BackgroundColor="Transparent"
+                            HeightRequest="40"
+                            Placeholder="Buscar"
+                            SearchCommand="{Binding SearchCommand}"
+                            Text="{Binding Search}">
+                        </SearchBar>
+                    </StackLayout>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell Height="120">
+                            <Grid>
+                                <Grid.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding GotoCountryAsync}"/>
+                                </Grid.GestureRecognizers>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <fffimage:CachedImage
+                                    CacheDuration="50"
+                                    DownsampleToViewSize="True"
+                                    Grid.Column="0"
+                                    ErrorPlaceholder="ErrorImage"
+                                    LoadingPlaceholder="LoaderImage"
+                                    RetryCount="3"
+                                    RetryDelay="600"
+                                    Source="{Binding Flag, Converter={StaticResource SvgImageSourceConverter}}" >
+                                </fffimage:CachedImage>
+                                <Label x:Name="idLabel" Grid.Column="1" Text="{Binding Name}" VerticalTextAlignment="Center" Margin="5" />
+                                <Image Grid.Column="2" HorizontalOptions="EndAndExpand" VerticalOptions="CenterAndExpand" Source="ic_flecha_derecha" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
