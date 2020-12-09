@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+             xmlns:pv="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+             x:Class="FoodMenu.Views.MainPage"
+             Title="{Binding Title}">
+
+    <pv:PancakeView>
+        <pv:PancakeView.BackgroundGradientStops>
+            <pv:GradientStopCollection>
+                <pv:GradientStop Color="#f6e8e8" Offset="0" />
+                <pv:GradientStop Color="#f4f4f4" Offset="1" />
+            </pv:GradientStopCollection>
+        </pv:PancakeView.BackgroundGradientStops>
+        <Grid RowDefinitions="100, *">
+            <Grid Margin="30, 0" WidthRequest="80" HeightRequest="80"
+                  HorizontalOptions="End" VerticalOptions="Center">
+                <Grid.Clip> <EllipseGeometry Center="25,25" RadiusX="25" RadiusY="25" /> </Grid.Clip>
+                <Image Source="bag" WidthRequest="25" HeightRequest="25"
+                       HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+            <Grid BackgroundColor="White" WidthRequest="30" HeightRequest="30"
+                  Margin="10" HorizontalOptions="End" VerticalOptions="Start">
+                <Grid.Clip> <EllipseGeometry Center="15,15" RadiusX="15" RadiusY="15" /> </Grid.Clip>
+                <Label Text="{Binding OrderCount}" TextColor="#a36767" FontAttributes="Bold"
+                       HorizontalOptions="Center" VerticalOptions="Center" />
+            </Grid>
+
+            <CarouselView Grid.Row="1"  ItemsSource="{Binding Foods}">
+                <CarouselView.EmptyView>
+                    <Label Text="No item found" TextColor="Gray" 
+                           HorizontalOptions="Center" VerticalOptions="Center" />
+                </CarouselView.EmptyView>
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout Spacing="20" HorizontalOptions="FillAndExpand">
+                            <Image Source="{Binding Image}" WidthRequest="200" HeightRequest="200" />
+                            <Label Text="{Binding Price, StringFormat='${0}'}" TextColor="#a36767" 
+                                   FontSize="20" FontAttributes="Bold" HorizontalOptions="Center"/>
+                            <Label Text="{Binding Name}" TextColor="Black" FontSize="25" 
+                                   FontAttributes="Bold" WidthRequest="220" HorizontalOptions="Center" 
+                                   HorizontalTextAlignment="Center" LineBreakMode="WordWrap"/>
+                            <Label Text="{Binding Description}" FontSize="18" WidthRequest="300" 
+                                   HorizontalOptions="Center" HorizontalTextAlignment="Center" 
+                                   LineBreakMode="WordWrap"/>
+                            <Button BackgroundColor="#a36767" Text="Add Order" TextColor="White" 
+                                    HorizontalOptions="Center" Padding="10" WidthRequest="200" CornerRadius="30" 
+                                    Margin="20" />
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </CarouselView>
+        </Grid>
+    </pv:PancakeView>
+
+</ContentPage>
