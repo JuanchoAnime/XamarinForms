@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+    <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DebugType>portable</DebugType>
+    <DebugSymbols>true</DebugSymbols>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="chopi_spring_song.mp3" />
+    <None Remove="Music\beethoven-symphony-5-1st-movement_MkPPmyBd.mp3" />
+    <None Remove="Music\beethoven-symphony-9-2nd-movement_fyPw7yrd.mp3" />
+    <None Remove="Music\bizet-les-toreadors_zy0CFVE__NWM.mp3" />
+    <None Remove="Music\felix-mendelssohn-wedding-march-traditional-church-organ_fyWL9ENu_NWM.mp3" />
+    <None Remove="Music\mozart-eine-kleine-nachtmusik-full_zJ8IiEVd_NWM.mp3" />
+    <None Remove="Music\nc-040417-Fur-Elise-Beethoven_NWM.mp3" />
+    <None Remove="Music\ssm-102518-beethoven-moonlight-sonata_NWM.mp3" />
+    <None Remove="Music\ssm-102518-in-the-hall-of-the-mountain-king_NWM.mp3" />
+    <None Remove="Music\tchaikovsky-1812-overture_Mk7d0MHO.mp3" />
+    <None Remove="Music\tchaikovsky-dance-of-the-sugar-plum-fairy_fyV_Azru_NWM.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="chopi_spring_song.mp3" />
+    <EmbeddedResource Include="Music\beethoven-symphony-5-1st-movement_MkPPmyBd.mp3" />
+    <EmbeddedResource Include="Music\beethoven-symphony-9-2nd-movement_fyPw7yrd.mp3" />
+    <EmbeddedResource Include="Music\bizet-les-toreadors_zy0CFVE__NWM.mp3" />
+    <EmbeddedResource Include="Music\felix-mendelssohn-wedding-march-traditional-church-organ_fyWL9ENu_NWM.mp3" />
+    <EmbeddedResource Include="Music\mozart-eine-kleine-nachtmusik-full_zJ8IiEVd_NWM.mp3" />
+    <EmbeddedResource Include="Music\nc-040417-Fur-Elise-Beethoven_NWM.mp3" />
+    <EmbeddedResource Include="Music\ssm-102518-beethoven-moonlight-sonata_NWM.mp3" />
+    <EmbeddedResource Include="Music\ssm-102518-in-the-hall-of-the-mountain-king_NWM.mp3" />
+    <EmbeddedResource Include="Music\tchaikovsky-1812-overture_Mk7d0MHO.mp3" />
+    <EmbeddedResource Include="Music\tchaikovsky-dance-of-the-sugar-plum-fairy_fyV_Azru_NWM.mp3" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Xam.Plugin.SimpleAudioPlayer" Version="1.4.0" />
+    <PackageReference Include="Xamarin.Forms" Version="4.8.0.1269" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.5.3.2" />
+    <PackageReference Include="Xamarin.Forms.PancakeView" Version="2.1.0.714" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="View\LandingPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+    <EmbeddedResource Update="View\PlayerPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+    </EmbeddedResource>
+  </ItemGroup>
+</Project>
