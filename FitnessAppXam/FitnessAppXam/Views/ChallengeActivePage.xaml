@@ -1,0 +1,172 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FitnessAppXam.ViewModels"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             xmlns:fontAwesome="clr-namespace:FitnessAppXam.Resources.Fonts"
+             x:Class="FitnessAppXam.Views.ChallengeActivePage">
+    <ContentPage.BindingContext>
+        <vm:ChallengeActiveViewModel />
+    </ContentPage.BindingContext>
+    <StackLayout Padding="6, 16">
+        <CarouselView
+            ItemsSource="{Binding Challenges}"
+            IsTabStop="True"
+            PeekAreaInsets="10"
+            IndicatorView="indicatorview">
+            <CarouselView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="16,0,0,0">
+                        <VisualStateManager.VisualStateGroups>
+                            <VisualStateGroup x:Name="CommonStates">
+                                <VisualState x:Name="CurrentItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Scale"
+                                        Value="1.1" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="PreviousItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                        Value="0.5" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="NextItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                        Value="0.5" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                                <VisualState x:Name="DefaultItem">
+                                    <VisualState.Setters>
+                                        <Setter Property="Opacity"
+                                        Value="0.25" />
+                                    </VisualState.Setters>
+                                </VisualState>
+                            </VisualStateGroup>
+                        </VisualStateManager.VisualStateGroups>
+
+                        <Frame HasShadow="True" Padding="0,0,4,0" 
+                               CornerRadius="12" WidthRequest="320">
+                            <Frame.Background>
+                                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                                    <GradientStop Color="#8A2387" Offset="0.1"/>
+                                    <GradientStop Color="#E94057" Offset="0.6"/>
+                                    <GradientStop Color="#F27121" Offset="1.0"/>
+                                </LinearGradientBrush>
+                            </Frame.Background>
+                            <Grid RowDefinitions="Auto, Auto,*,*,Auto" Padding="0,40,0,0"
+                                  RowSpacing="8">
+                                <Frame HeightRequest="100" WidthRequest="100"
+                                       Padding="0" HorizontalOptions="Center"
+                                       BackgroundColor="{StaticResource BackgroundColor}"
+                                       CornerRadius="50">
+                                    <Label Text="{x:Static fontAwesome:FontAwesomeIcons.Award}" FontSize="60" 
+                                       FontFamily="FASolid" TextColor="{StaticResource TextSecondaryColor}"
+                                       HorizontalOptions="Center" VerticalOptions="Center"/>
+                                </Frame>
+                                <Frame Grid.Row="1" BackgroundColor="{StaticResource TextSecondaryColor}"
+                                       HasShadow="False" HorizontalOptions="Center" CornerRadius="10"
+                                       Padding="5">
+                                    <Label>
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span Text="{Binding Status}"></Span>
+                                                <Span Text="  -  "></Span>
+                                                <Span Text="{Binding DaysLeft}"></Span>
+                                                <Span Text=" DAYS LEFT"></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </Frame>
+                                <StackLayout Grid.Row="2" VerticalOptions="Center">
+                                    <Label TextColor="White" Text="{Binding Name}" 
+                                           FontSize="24" HorizontalOptions="Center"/>
+                                    <Label TextColor="White" Text="{Binding Description}" 
+                                           FontSize="24" HorizontalOptions="Center" />
+                                </StackLayout>
+
+                                <StackLayout Grid.Row="3" Orientation="Horizontal">
+                                    <Label HorizontalOptions="CenterAndExpand" IsVisible="{Binding IsJoined}">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span FontFamily="FASolid" Text="{x:Static fontAwesome:FontAwesomeIcons.Check}"></Span>
+                                                <Span Text="   "></Span>
+                                                <Span>Joined</Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                    <Label HorizontalOptions="CenterAndExpand">
+                                        <Label.FormattedText>
+                                            <FormattedString>
+                                                <Span FontFamily="FASolid" Text="{x:Static fontAwesome:FontAwesomeIcons.Users}"></Span>
+                                                <Span Text="   "> </Span>
+                                                <Span Text="{Binding Participants}"></Span>
+                                                <Span Text=" Participants."></Span>
+                                            </FormattedString>
+                                        </Label.FormattedText>
+                                    </Label>
+                                </StackLayout>
+
+                                <Frame Grid.Row="4" Margin="12,0,20,30"
+                                       Padding="12" HasShadow="False">
+                                    <Grid ColumnDefinitions="Auto, *, Auto" ColumnSpacing="10">
+                                        <Frame HeightRequest="50" WidthRequest="50" HasShadow="False"
+                                               BorderColor="{StaticResource TextPrimaryColor}"
+                                               Padding="0" BackgroundColor="{StaticResource BackgroundColor}"
+                                               HorizontalOptions="Center" CornerRadius="50">
+                                            <Label Text="{x:Static fontAwesome:FontAwesomeIcons.ThumbsUp}" 
+                                                   TextColor="{StaticResource TextSecondaryColor}"
+                                                   FontSize="24" FontFamily="FASolid" 
+                                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        </Frame>
+
+                                        <StackLayout Grid.Column="1" Spacing="2">
+                                            <Label FontSize="Small" HorizontalOptions="CenterAndExpand"
+                                                   TextColor="{StaticResource TextPrimaryColor}" >
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Earned}"></Span>
+                                                        <Span Text=" Unerarned"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <Label FontSize="Small"  HorizontalOptions="CenterAndExpand"
+                                                   TextColor="{StaticResource TextSecondaryColor}">
+                                                <Label.FormattedText>
+                                                    <FormattedString>
+                                                        <Span Text="{Binding Missing}"></Span>
+                                                        <Span Text=" to "></Span>
+                                                        <Span Text="{Binding Goal}"></Span>
+                                                    </FormattedString>
+                                                </Label.FormattedText>
+                                            </Label>
+                                            <ProgressBar Progress="{Binding Complete}" ProgressColor="{StaticResource AccentColor}" />
+                                        </StackLayout>
+
+                                        <Frame Grid.Column="2" HeightRequest="25" WidthRequest="25" 
+                                               VerticalOptions="End" HasShadow="False"
+                                               BorderColor="{StaticResource TextPrimaryColor}"
+                                               Padding="0" BackgroundColor="{StaticResource BackgroundColor}"
+                                               HorizontalOptions="Center" CornerRadius="12">
+                                            <Label Text="{x:Static fontAwesome:FontAwesomeIcons.ThumbsUp}" 
+                                                   TextColor="{StaticResource TextSecondaryColor}"
+                                                   FontSize="12" FontFamily="FASolid" 
+                                                   HorizontalOptions="Center" VerticalOptions="Center"/>
+                                        </Frame>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CarouselView.ItemTemplate>
+        </CarouselView>
+
+        <IndicatorView
+            x:Name="indicatorview"
+            IndicatorColor="LightGray"
+            IndicatorSize="10"
+            SelectedIndicatorColor="{StaticResource AccentColor}" />
+    </StackLayout>
+</ContentPage>

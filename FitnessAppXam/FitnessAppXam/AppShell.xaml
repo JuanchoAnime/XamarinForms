@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms" 
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+       Shell.NavBarIsVisible="False"
+       xmlns:local="clr-namespace:FitnessAppXam.Views"
+       Title="FitnessAppXam"
+       xmlns:fontAwesome="clr-namespace:FitnessAppXam.Resources.Fonts"
+       x:Class="FitnessAppXam.AppShell">
+
+    <Shell.Resources>
+        <ResourceDictionary>
+            <Style x:Key="BaseStyle" TargetType="Element">
+                <Setter Property="Shell.BackgroundColor" Value="{StaticResource BackgroundColor}" />
+                <Setter Property="Shell.ForegroundColor" Value="{StaticResource BackgroundColor}" />
+                <Setter Property="Shell.TitleColor" Value="{StaticResource TabIconSelectedColor}" />
+                <Setter Property="Shell.DisabledColor" Value="#B4FFFFFF" />
+                <Setter Property="Shell.UnselectedColor" Value="{StaticResource TabIconUnSelectedColor}" />
+                <Setter Property="Shell.TabBarBackgroundColor" Value="{StaticResource TabBackgroundColor}" />
+                <Setter Property="Shell.TabBarForegroundColor" Value="{StaticResource TabIconSelectedColor}"/>
+                <Setter Property="Shell.TabBarUnselectedColor" Value="{StaticResource TabIconUnSelectedColor}"/>
+                <Setter Property="Shell.TabBarTitleColor" Value="{StaticResource TabIconSelectedColor}"/>
+            </Style>
+            <Style TargetType="TabBar" BasedOn="{StaticResource BaseStyle}" />
+            <Style TargetType="FlyoutItem" BasedOn="{StaticResource BaseStyle}" />
+        </ResourceDictionary>
+    </Shell.Resources>
+
+    <TabBar>
+        <ShellContent Title="Featured" ContentTemplate="{DataTemplate local:FeaturedPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.Star}" />
+            </ShellContent.Icon>
+        </ShellContent>
+
+
+        <ShellContent Title="Challenge" ContentTemplate="{DataTemplate local:TabbedPage1}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.Trophy}" />
+            </ShellContent.Icon>
+        </ShellContent>
+
+
+        <ShellContent Title="Classes" ContentTemplate="{DataTemplate local:ClassesPage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.PlayCircle}" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="Profile" ContentTemplate="{DataTemplate local:ProfilePage}" >
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.UserCircle}" />
+            </ShellContent.Icon>
+        </ShellContent>
+        <ShellContent Title="More" ContentTemplate="{DataTemplate local:MorePage}">
+            <ShellContent.Icon>
+                <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.GripLines}" />
+            </ShellContent.Icon>
+        </ShellContent>
+    </TabBar>
+
+
+</Shell>

@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:xct="http://xamarin.com/schemas/2020/toolkit"
+             xmlns:fontAwesome="clr-namespace:FitnessAppXam.Resources.Fonts"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             x:Class="FitnessAppXam.Views.ClassesPage">
+    <Grid>
+        <xct:TabView TabStripPlacement="Top" TabStripHeight="70"
+                     TabIndicatorColor="{StaticResource AccentColor}"
+                     TabContentBackgroundColor="{StaticResource BackgroundColor}">
+
+            <xct:TabViewItem Text="Classes" FontSize="12"
+                             BackgroundColor="{StaticResource BackgroundColor}"
+                             TextColor="{StaticResource TextSecondaryColor}" 
+                             TextColorSelected="{StaticResource AccentColor}" >
+                <xct:TabViewItem.Icon>
+                    <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.PlayCircle}" />
+                </xct:TabViewItem.Icon>
+                <xct:TabViewItem.IconSelected>
+                    <FontImageSource FontFamily="FASolid" Color="{StaticResource AccentColor}"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.PlayCircle}" />
+                </xct:TabViewItem.IconSelected>
+                <CollectionView
+                    Margin="0,20,0,0">
+                    <CollectionView.ItemsSource>
+                        <x:Array Type="{x:Type x:String}">
+                            <x:String>Strength</x:String>
+                            <x:String>Yoga</x:String>
+                            <x:String>Cardio</x:String>
+                            <x:String>Meditation</x:String>
+                            <x:String>Outdoor</x:String>
+                            <x:String>Cycling</x:String>
+                            <x:String>Strerching</x:String>
+                            <x:String>Tread Bootcamp</x:String>
+                            <x:String>Bike Bootcamp</x:String>
+                            <x:String>Walking</x:String>
+                        </x:Array>
+                    </CollectionView.ItemsSource>
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Padding="12,6">
+                                <Frame BackgroundColor="Black" HasShadow="False" 
+                                       CornerRadius="20" Padding="0"> 
+                                    <Grid ColumnDefinitions="*,*" RowDefinitions="*">
+                                        <Label Grid.Column="0" VerticalOptions="Center"
+                                           TextColor="White" FontSize="20"
+                                           HorizontalOptions="CenterAndExpand" Text="{Binding .}">
+                                        </Label>
+                                        <Image Source="strength" HeightRequest="140" Margin="0,5,0,0" 
+                                               Grid.Column="1" HorizontalOptions="EndAndExpand"
+                                               VerticalOptions="EndAndExpand"/>
+                                    </Grid>
+                                </Frame>
+                            </Grid>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+            </xct:TabViewItem>
+
+            <xct:TabViewItem Text="Programs" FontSize="12"
+                             TextColor="{StaticResource TextSecondaryColor}" 
+                             TextColorSelected="{StaticResource AccentColor}">
+                <xct:TabViewItem.Icon>
+                    <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.WindowRestore}" />
+                </xct:TabViewItem.Icon>
+                <xct:TabViewItem.IconSelected>
+                    <FontImageSource FontFamily="FASolid" Color="{StaticResource AccentColor}"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.WindowRestore}" />
+                </xct:TabViewItem.IconSelected>
+                <Grid>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center"
+                           Text="TabContent 2" />
+                </Grid>
+            </xct:TabViewItem>
+
+            <xct:TabViewItem Text="Collections" FontSize="12"
+                             TextColor="{StaticResource TextSecondaryColor}" 
+                             TextColorSelected="{StaticResource AccentColor}">
+                <xct:TabViewItem.IconSelected>
+                    <FontImageSource FontFamily="FASolid" Color="{StaticResource AccentColor}"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.List}" />
+                </xct:TabViewItem.IconSelected>
+                <xct:TabViewItem.Icon>
+                    <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.List}" />
+                </xct:TabViewItem.Icon>
+                <Grid>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center"
+                           Text="TabContent 3" />
+                </Grid>
+            </xct:TabViewItem>
+
+            <xct:TabViewItem Text="Schedule" FontSize="12"
+                             TextColor="{StaticResource TextSecondaryColor}" 
+                             TextColorSelected="{StaticResource AccentColor}">
+                <xct:TabViewItem.IconSelected>
+                    <FontImageSource FontFamily="FASolid" Color="{StaticResource AccentColor}"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.Calendar}" />
+                </xct:TabViewItem.IconSelected>
+                <xct:TabViewItem.Icon>
+                    <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.Calendar}" />
+                </xct:TabViewItem.Icon>
+                <Grid>
+                    <Label HorizontalOptions="Center" VerticalOptions="Center"
+                           Text="TabContent 4" />
+                </Grid>
+            </xct:TabViewItem>
+            
+            
+        </xct:TabView>
+    </Grid>
+</ContentPage>

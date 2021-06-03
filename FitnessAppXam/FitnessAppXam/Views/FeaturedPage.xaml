@@ -1,0 +1,46 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:FitnessAppXam.ViewModels"
+             BackgroundColor="{StaticResource BackgroundColor}"
+             x:Class="FitnessAppXam.Views.FeaturedPage">
+
+    <ContentPage.BindingContext>
+        <vm:FeaturedViewModel />
+    </ContentPage.BindingContext>
+
+
+    <StackLayout>
+        <Label Margin="10,0" Text="Live and  Upcoming" FontAttributes="Bold"
+               FontSize="Large" TextColor="{StaticResource TextPrimaryColor}" />
+        <CollectionView ItemsLayout="HorizontalList" HeightRequest="250"
+                        BackgroundColor="Transparent" ItemsSource="{Binding RecommendedPrograms}">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="16,0,0,0">
+                        <Frame HasShadow="True" Padding="0,0,4,0" 
+                               CornerRadius="12" WidthRequest="320"
+                               BackgroundColor="{StaticResource CardBackgroundColor}">
+                            <Grid RowDefinitions="160, Auto, Auto" Margin="0,0,0,10">
+                                <BoxView BackgroundColor="black" WidthRequest="260" />
+                                <Label Grid.Row="1" Margin="16,4,0,0"
+                                       TextColor="{StaticResource TextPrimaryColor}"
+                                       FontSize="Small">
+                                    <Label.FormattedText>
+                                        <FormattedString>
+                                            <Span>PROGRAM -</Span>
+                                            <Span Text="{Binding Program}" CharacterSpacing="1"></Span>
+                                        </FormattedString>
+                                    </Label.FormattedText>
+                                </Label>
+                                <Label Grid.Row="2"  Text="{Binding Activity}" Margin="16,4,0,0"
+                                       TextColor="{StaticResource TextSecondaryColor}" 
+                                       FontSize="Medium"/>
+                            </Grid>
+                        </Frame>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>    
+        </CollectionView>
+    </StackLayout>
+</ContentPage>

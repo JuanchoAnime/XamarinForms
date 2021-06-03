@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:fontAwesome="clr-namespace:FitnessAppXam.Resources.Fonts"
+             xmlns:page="clr-namespace:FitnessAppXam.Views"
+             xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
+             BarBackgroundColor="{StaticResource BackgroundColor}"
+             SelectedTabColor="{StaticResource TabIconSelectedColor}"
+             android:TabbedPage.IsSwipePagingEnabled="False"
+             UnselectedTabColor="{StaticResource TabIconUnSelectedColor}"
+             x:Class="FitnessAppXam.Views.TabbedPage1">
+    <TabbedPage.Children>
+        <page:ChallengeActivePage Title="Active" >
+            <page:ChallengeActivePage.IconImageSource>
+                <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.Trophy}" />
+            </page:ChallengeActivePage.IconImageSource>
+        </page:ChallengeActivePage>
+
+        <page:ChallengeActivePage Title="UpComing" >
+            <page:ChallengeActivePage.IconImageSource>
+                <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.AngleDoubleUp}" />
+            </page:ChallengeActivePage.IconImageSource>
+        </page:ChallengeActivePage>
+
+        <page:ChallengeCompletePage Title="Completed" >
+            <page:ChallengeCompletePage.IconImageSource>
+                <FontImageSource FontFamily="FASolid"
+                                 Glyph="{x:Static fontAwesome:FontAwesomeIcons.Award}" />
+            </page:ChallengeCompletePage.IconImageSource>
+        </page:ChallengeCompletePage>
+    </TabbedPage.Children>
+</TabbedPage>
