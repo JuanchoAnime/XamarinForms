@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             NavigationPage.HasNavigationBar="False"
+             xmlns:page="clr-namespace:PruebaUI.Pages"
+             Shell.NavBarIsVisible="False"
+             x:Class="PruebaUI.Pages.MainTabPage">
+
+    <FlyoutItem FlyoutDisplayOptions="AsSingleItem" Shell.PresentationMode="Animated" >
+        <Tab Title="Food" Icon="ic_fastfood">
+            <ShellContent>
+                <page:FoodPage/>
+            </ShellContent>
+        </Tab>
+        <Tab Title="Wheater" Icon="ic_watch_later">
+            <ShellContent>
+                <page:WheaterPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Timer" Icon="ic_where_to_vote">
+            <ShellContent>
+                <page:TimerPage />
+            </ShellContent>
+        </Tab>
+        <Tab Title="Clock" Icon="ic_access_alarm">
+            <ShellContent>
+                <page:ClockPage />
+            </ShellContent>
+        </Tab>
+    </FlyoutItem>
+    
+    
+</Shell>

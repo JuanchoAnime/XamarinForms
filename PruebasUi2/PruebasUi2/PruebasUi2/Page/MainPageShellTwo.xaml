@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Shell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             mc:Ignorable="d"
+             xmlns:view="clr-namespace:PruebasUi2.Page"
+             x:Class="PruebasUi2.Page.MainPageShellTwo">
+
+
+
+    <Shell.FlyoutHeaderTemplate>
+        <DataTemplate>
+            <ContentView 
+                HeightRequest="170"
+                BindingContext="{Binding Main, Source={StaticResource InstanceLocator}}">
+                <Grid
+                    BindingContext="{Binding Profile}"
+                    HorizontalOptions="FillAndExpand"
+                    VerticalOptions="FillAndExpand">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="10"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="80"/>
+                        <RowDefinition Height="Auto"/>
+
+                    </Grid.RowDefinitions>
+                    <Image 
+                        Aspect="AspectFill"
+                        Source="gradient.jpeg"
+                        Grid.ColumnSpan="5"
+                        Grid.RowSpan="4"
+                        Opacity="0.6" />
+                    <Image 
+                        Source="https://cdn.myanimelist.net/images/userimages/9128492.jpg?t=1587994200" 
+                        HeightRequest="80" 
+                        WidthRequest="80" 
+                        Grid.Column="1" 
+                        Grid.Row="1" 
+                        HorizontalOptions="Start"
+                        VerticalOptions="End"/>
+                    <StackLayout 
+                        VerticalOptions="CenterAndExpand"
+                        Grid.Row="1"
+                        Margin="10,0,0,0"
+                        Grid.Column="2" 
+                        Grid.ColumnSpan="3" 
+                        Orientation="Vertical">
+                        <Label
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            TextColor="White"
+                            Text="{Binding Name}"/>
+                        <Label 
+                            HorizontalTextAlignment="Start"
+                            VerticalTextAlignment="Center"
+                            TextColor="White" Text="{Binding Email}"/>
+                    </StackLayout>
+                </Grid>
+            </ContentView>
+        </DataTemplate>
+    </Shell.FlyoutHeaderTemplate>
+
+    <ShellContent Title="Dashboard" Icon="home.png" IsTabStop="True" ContentTemplate="{DataTemplate view:DashBoardPage}" />
+    <ShellContent Title="Profile" Icon="profile.png" IsTabStop="True" ContentTemplate="{DataTemplate view:ProfilePage}" />
+    <ShellContent Title="Image Animated" Icon="briefcase.png" IsTabStop="True" ContentTemplate="{DataTemplate view:EjemploLottiePage }" />
+    <ShellContent Title="More" Icon="settings.png" IsTabStop="True" ContentTemplate="{DataTemplate view:MorePage }" />
+
+</Shell>
